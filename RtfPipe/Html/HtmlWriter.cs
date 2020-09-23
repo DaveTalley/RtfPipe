@@ -482,9 +482,12 @@ namespace RtfPipe
 
     private void EnsureSpans(FormatContext format)
     {
+      bool preCheck = _tags.Count > 0;
+      List<IToken> existing = default;
+      if (preCheck) existing = CharacterFormats(_tags.Peek());
       EnsureParagraph(format);
+      if (!preCheck) existing = CharacterFormats(_tags.Peek());
 
-      var existing = CharacterFormats(_tags.Peek());
       var requested = CharacterFormats(format);
 
       var intersection = existing.Intersect(requested).ToList();
