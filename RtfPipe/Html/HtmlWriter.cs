@@ -155,9 +155,12 @@ namespace RtfPipe
       }
       else if (token is RowBreak || token is NestRow)
       {
-        while (_tags.Peek().Name != "tr")
+        if (_tags.Count > 0)
+        {
+          while (_tags.Peek().Name != "tr")
+            EndTag();
           EndTag();
-        EndTag();
+        }
         _startOfLine = true;
         _state = WriteState.Other;
         format.RemoveFirstOfType<SingleLineIndent>();
