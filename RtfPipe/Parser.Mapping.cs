@@ -467,7 +467,7 @@ namespace RtfPipe
           return new CellDefaults();
         case "cell":
           return new CellBreak();
-        case "trgraph":
+        case "trgaph":
           return new CellSpacing(new UnitValue(number, UnitType.Twip));
         case "cellx":
           return new RightCellBoundary(new UnitValue(number, UnitType.Twip));
@@ -531,6 +531,16 @@ namespace RtfPipe
           return new NestRow();
         case "itap":
           return new NestingLevel(number >= 0 ? number : 1);
+        case "sscolspan": return new NestColSpan(number);
+        case "clmgf": return new CellMergeFirst();
+        case "clmrg": return new CellMerge();
+        case "clvmgf": return new CellVerticalMergeFirst();
+        case "clvmrg": return new CellVerticalMerge();
+        case "lastrow": return new LastRow();
+        case "clpadt": return new CellPaddingTop(new UnitValue(number, UnitType.Twip));
+        case "clpadr": return new CellPaddingRight(new UnitValue(number, UnitType.Twip));
+        case "clpadb": return new CellPaddingBottom(new UnitValue(number, UnitType.Twip));
+        case "clpadl": return new CellPaddingLeft(new UnitValue(number, UnitType.Twip));
 
         // Borders and Shading
         case "brdrs": return new BorderStyleTag(BorderStyle.SingleThick);
