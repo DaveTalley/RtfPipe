@@ -9,6 +9,7 @@ namespace RtfPipe
     Inch,
     Pica,
     Point,
-    Twip
+    Twip,
+    Emu
   }
 }

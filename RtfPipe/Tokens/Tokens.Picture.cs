@@ -118,4 +118,46 @@ namespace RtfPipe.Tokens
 
     public PictureBinaryLength(int value) : base(value) { }
   }
+
+  public class Shape : ControlTag  { public override string Name => "shp"; }
+  public class ShapeInstruction : ControlTag { public override string Name => "shpinst"; }
+  public class ShapeWrapText : ControlWord<ShapeWrap>
+  {
+    public override string Name => "shpwr";
+    public ShapeWrapText(ShapeWrap value) : base(value) { }
+
+  }
+  public class ShapePositionLeft : ControlWord<UnitValue>
+  {
+    public override string Name => "shpleft";
+    public ShapePositionLeft(UnitValue value) : base(value) { }
+  }
+  public class ShapePositionRight : ControlWord<UnitValue>
+  {
+    public override string Name => "shpright";
+    public ShapePositionRight(UnitValue value) : base(value) { }
+  }
+  public class ShapePositionTop : ControlWord<UnitValue>
+  {
+    public override string Name => "shptop";
+    public ShapePositionTop(UnitValue value) : base(value) { }
+  }
+  public class ShapePositionBottom : ControlWord<UnitValue>
+  {
+    public override string Name => "shpbottom";
+    public ShapePositionBottom(UnitValue value) : base(value) { }
+  }
+  public class ShapePositionXFromPage : ControlTag  { public override string Name => "shpbxpage"; }
+  public class ShapePositionXFromMargin : ControlTag { public override string Name => "shpbxmargin"; }
+  public class ShapePositionXFromColumn : ControlTag { public override string Name => "shpbxcolumn"; }
+  public class ShapePositionXIgnore : ControlTag { public override string Name => "shpbxignore"; }
+  public class ShapePositionYFromPage : ControlTag { public override string Name => "shpbypage"; }
+  public class ShapePositionYFromMargin : ControlTag { public override string Name => "shpbymargin"; }
+  public class ShapePositionYFromParagraph : ControlTag { public override string Name => "shpbypara"; }
+  public class ShapePositionYIgnore : ControlTag { public override string Name => "shpbyignore"; }
+  public class ShapeProperty : ControlTag { public override string Name => "sp"; }
+  public class ShapePropertyName : ControlTag { public override string Name => "sn";  }
+  public class ShapePropertyValue : ControlTag { public override string Name => "sv"; }
+  public class ShapeText : ControlTag { public override string Name => "shptxt"; }
+
 }

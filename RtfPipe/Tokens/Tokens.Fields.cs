@@ -28,4 +28,33 @@ namespace RtfPipe.Tokens
   {
     public override string Name => "bkmkend";
   }
+
+  public class FormField : ControlTag
+  {
+    public override string Name => "formfield";
+  }
+  public class FieldName : ControlTag
+  {
+    public override string Name => "ffname";
+  }
+  public class FieldType : ControlWord<FieldTypeCode>
+  {
+    public override string Name => "fftype";
+    public FieldType(FieldTypeCode value) : base(value) { }
+  }
+  public class FieldCheckBoxSize : ControlWord<UnitValue>
+  {
+    public override string Name => "ffhps";
+    public FieldCheckBoxSize(UnitValue value) : base(value) { }
+  }
+  public class FieldListResult : ControlWord<int>
+  {
+    public override string Name => "ffres";
+    public FieldListResult(int value) : base(value) { }
+  }
+  public class FieldListDefault : ControlWord<int>
+  {
+    public override string Name => "ffdefres";
+    public FieldListDefault(int value) : base(value) { }
+  }
 }

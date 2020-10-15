@@ -106,4 +106,10 @@ namespace RtfPipe.Tokens
   {
     public override string Name => "footnote";
   }
+
+  public class RevisionTable : ControlTag
+  {
+    public override string Name => "revtbl";
+    public override TokenType Type => TokenType.HeaderTag;
+  }
 }

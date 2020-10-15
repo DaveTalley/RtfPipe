@@ -175,4 +175,10 @@ namespace RtfPipe.Tokens
   {
     public override string Name => "listtext";
   }
+
+  public class ListTable : ControlTag
+  {
+    public override string Name => "listtable";
+    public override TokenType Type => TokenType.HeaderTag;
+  }
 }

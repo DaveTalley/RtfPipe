@@ -36,6 +36,8 @@ namespace RtfPipe
           return this.Value * 96.0 / 72;
         case UnitType.Twip:
           return this.Value * 96.0 / 1440;
+        case UnitType.Emu:
+          return this.Value / 9525;
         case UnitType.Empty:
           return 0;
         default:
@@ -46,6 +48,11 @@ namespace RtfPipe
     public double ToPt()
     {
       return ToPx() * 72.0 / 96;
+    }
+
+    public double ToEm()
+    {
+      return ToPx() / 16.0;
     }
 
     public override bool Equals(object obj)

@@ -164,6 +164,18 @@ namespace RtfPipe
           return new FooterEven();
         case "footerr":
           return new FooterOdd();
+        case "paperw": return new PaperWidth(new UnitValue(number, UnitType.Twip));
+        case "paperh": return new PaperHeight(new UnitValue(number, UnitType.Twip));
+        case "margl": return new MarginLeft(new UnitValue(number, UnitType.Twip));
+        case "margr": return new MarginRight(new UnitValue(number, UnitType.Twip));
+        case "margt": return new MarginTop(new UnitValue(number, UnitType.Twip));
+        case "margb": return new MarginBottom(new UnitValue(number, UnitType.Twip));
+        case "pgwsxn": return new SectionWidth(new UnitValue(number, UnitType.Twip));
+        case "pghsxn": return new SectionHeight(new UnitValue(number, UnitType.Twip));
+        case "marglsxn": return new SectionMarginLeft(new UnitValue(number, UnitType.Twip));
+        case "margrsxn": return new SectionMarginRight(new UnitValue(number, UnitType.Twip));
+        case "margtsxn": return new SectionMarginTop(new UnitValue(number, UnitType.Twip));
+        case "margbsxn": return new SectionMarginBottom(new UnitValue(number, UnitType.Twip));
 
         // Font Tags
         case "f":
@@ -326,6 +338,8 @@ namespace RtfPipe
           return new ListLevelNumber(number);
         case "listtext":
           return new ListTextFallback();
+        case "listtable":
+          return new ListTable();
 
         // Section tags
         case "sect":
@@ -457,6 +471,25 @@ namespace RtfPipe
           return new PictureScaleX(number);
         case "picscaley":
           return new PictureScaleY(number);
+        case "shp": return new Shape();
+        case "shpinst": return new ShapeInstruction();
+        case "shpwr": return new ShapeWrapText((ShapeWrap)number);
+        case "shpbottom": return new ShapePositionBottom(new UnitValue(number, UnitType.Twip));
+        case "shpleft": return new ShapePositionLeft(new UnitValue(number, UnitType.Twip));
+        case "shpright": return new ShapePositionRight(new UnitValue(number, UnitType.Twip));
+        case "shptop": return new ShapePositionTop(new UnitValue(number, UnitType.Twip));
+        case "shpbxpage": return new ShapePositionXFromPage();
+        case "shpbxmargin": return new ShapePositionXFromMargin();
+        case "shpbxcolumn": return new ShapePositionXFromColumn();
+        case "shpbxignore": return new ShapePositionXIgnore();
+        case "shpbypage": return new ShapePositionYFromPage();
+        case "shpbymargin": return new ShapePositionYFromMargin();
+        case "shpbypara": return new ShapePositionYFromParagraph();
+        case "shpbyignore": return new ShapePositionYIgnore();
+        case "sp": return new ShapeProperty();
+        case "sn": return new ShapePropertyName();
+        case "sv": return new ShapePropertyValue();
+        case "shptxt": return new ShapeText();
 
         // Tables
         case "trowd":
@@ -602,6 +635,12 @@ namespace RtfPipe
           return new BookmarkStart();
         case "bkmkend":
           return new BookmarkEnd();
+        case "formfield": return new FormField();
+        case "ffname": return new FieldName();
+        case "fftype": return new FieldType((FieldTypeCode)number);
+        case "ffhps": return new FieldCheckBoxSize(UnitValue.FromHalfPoint(number));
+        case "ffres": return new FieldListResult(number);
+        case "ffdefres": return new FieldListDefault(number);
 
         // Tabs
         case "tab":
@@ -621,6 +660,8 @@ namespace RtfPipe
         // Other
         case "footnote":
           return new Footnote();
+        case "revtbl":
+          return new RevisionTable();
 
         default:
           if (number == int.MinValue)
